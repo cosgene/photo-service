@@ -1,0 +1,78 @@
+# =========================
+# OS / system files
+# =========================
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# =========================
+# IDE / editors
+# =========================
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# =========================
+# OpenServer / local env
+# =========================
+OSPanel/
+OpenServer/
+domains/
+*.log
+logs/
+tmp/
+temp/
+
+# =========================
+# PHP
+# =========================
+vendor/
+composer.lock
+*.cache
+*.log
+
+# PHPStorm metadata
+.phpstorm.meta.php
+
+# =========================
+# Environment files
+# =========================
+.env
+.env.*
+!.env.example
+
+# =========================
+# Node (если вдруг используешь)
+# =========================
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# =========================
+# Docker (если появится)
+# =========================
+docker-compose.override.yml
+
+# =========================
+# Ngrok
+# =========================
+ngrok.yml
+*.ngrok
+
+# =========================
+# Runtime / cache
+# =========================
+cache/
+sessions/
+storage/logs/
+storage/framework/cache/
+storage/framework/sessions/
+storage/framework/views/
+
+# =========================
+# Uploads (если есть пользовательские файлы)
+# =========================
+uploads/*
+!uploads/.gitkeep

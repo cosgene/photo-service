@@ -1,5 +1,7 @@
 <?php
 
+require_once __DIR__ . '/../Core/Database.php';
+
 $envPath = __DIR__ . '/../config/env.php';
 
 if (!file_exists($envPath)) {
@@ -14,7 +16,8 @@ if (!function_exists('loadEnv')) {
 
 loadEnv(__DIR__ . '/../.env');
 
-require_once __DIR__ . '/../app/Controllers/BotController.php';
+$db = Database::connect();
 
-$controller = new BotController();
-$controller->handle();
+$db->exec("TRUNCATE TABLE users");
+
+echo "users cleared";

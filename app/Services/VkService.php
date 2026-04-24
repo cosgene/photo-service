@@ -1,17 +1,21 @@
 <?php
 
+require_once __DIR__ . '/../Core/Logger.php';
+
 class VkService {
 
     private $token;
     private $version = '5.199';
 
     public function __construct() {
-        $this->token = $_ENV['VK_TOKEN'];
+        $this->token = $_ENV['VK_TOKEN'] ?? null;
     }
 
     public function sendMessage($userId, $message, $keyboard = null) {
+
         if (!$this->token) {
-            throw new Exception("VK_TOKEN not set");
+            Logger::log('error.log', 'VK_TOKEN EMPTY');
+            return;
         }
 
         $params = [
@@ -22,15 +26,15 @@ class VkService {
             'v' => $this->version
         ];
 
-        if ($keyboard) {
+        if ($keyboard !== null && !empty($keyboard['buttons'])) {
             $params['keyboard'] = json_encode($keyboard, JSON_UNESCAPED_UNICODE);
         }
 
-        $response = file_get_contents("https://api.vk.com/method/messages.send?" . http_build_query($params));
+        $url = "https://api.vk.com/method/messages.send?" . http_build_query($params);
 
-        if ($response === false) {
-            error_log("VK request failed");
-        }
+        $response = @file_get_contents($url);
+
+        Logger::log('vk_api.log', $response ?: 'EMPTY RESPONSE');
     }
 
     public function getKeyboard() {
@@ -58,4 +62,11 @@ class VkService {
             ]
         ];
     }
+
+    public function hideKeyboard() {
+        return [
+            "buttons" => []
+        ];
+    }
+
 }

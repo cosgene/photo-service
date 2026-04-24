@@ -3,7 +3,7 @@
 return [
     'driver' => 'mysql',
     'host' => 'localhost',
-    'dbname' => 'photo_service',
-    'user' => 'root',
-    'password' => '',
+    'dbname' => 'sibiris_photo',
+    'user' => 'sibiris_photo',
+    'password' => 'ICXipyvxgdq196$@'
 ];

@@ -7,9 +7,16 @@ class Database {
     public static function connect() {
         if (self::$instance === null) {
 
-            $config = require __DIR__ . '/../../config/database.php';
+            $config = [
+                'host' => $_ENV['DB_HOST'],
+                'dbname' => $_ENV['DB_NAME'],
+                'user' => $_ENV['DB_USER'],
+                'password' => $_ENV['DB_PASS'],
+                'port' => $_ENV['DB_PORT']
+            ];
 
-            $dsn = "{$config['driver']}:host={$config['host']};dbname={$config['dbname']}";
+            $dsn = "mysql:host={$config['host']};port={$config['port']};dbname={$config['dbname']}";
+
 
             self::$instance = new PDO(
                 $dsn,

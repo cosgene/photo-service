@@ -21,7 +21,7 @@ class BotController {
         }
 
         if ($data['type'] === 'confirmation') {
-            echo '71e55f54';
+            echo '5d7d87d1';
             exit;
         }
 

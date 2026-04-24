@@ -3,7 +3,7 @@
 class VkService {
 
     private $token;
-    private $version = '5.131';
+    private $version = '5.199';
 
     public function __construct() {
         $this->token = $_ENV['VK_TOKEN'];
